@@ -176,7 +176,5 @@ int main()
     cout << "3" ;
     cout << "KONIEC" ;
 
-    getchar();
-    getchar();
     return 0;
 }
