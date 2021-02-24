@@ -71,7 +71,7 @@ float bubble(int tab[], int n)
 float insert(int tab[], int n)
 {
     auto start = high_resolution_clock::now(); 
-    for(int i=0; i<n; i++)
+    for(int i=1; i<n; i++)
     {
         int elem = tab[i];
         int k = i-1;
