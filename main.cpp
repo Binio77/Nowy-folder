@@ -110,71 +110,66 @@ int main()
     srand(time(NULL));
 
     int rozmiary[5] {200, 500, 1000, 10000, 100000};
-    int tab1[200], tab2[500], tab3[1000], tab4[10000], tab5[100000];
-    int *tablica[5] {tab1, tab2, tab3, tab4, tab5};
     
+    float (*(wskaz_funkcji[5]))(int [], int);
+    wskaz_funkcji[0] = bubble;
+    wskaz_funkcji[1] = index;
+    wskaz_funkcji[2] = insert;
+    wskaz_funkcji[3] = alg_sort;
+    wskaz_funkcji[4] = selection;
+
     for(int i=0; i<5; i++)
     {
-        odPdoK(tablica[i], rozmiary[i]);
-        f_wyj << bubble(tablica[i], rozmiary[i]) << '\t';
-        cout << "a" ;
-        odPdoK(tablica[i], rozmiary[i]);
-        f_wyj << index(tablica[i], rozmiary[i]) << '\t';
-        cout << "b" ;
-        odPdoK(tablica[i], rozmiary[i]);
-        f_wyj << insert(tablica[i], rozmiary[i]) << '\t';
-        cout << "c" ;
-        odPdoK(tablica[i], rozmiary[i]);
-        f_wyj << alg_sort(tablica[i], rozmiary[i]) << '\t';
-        cout << "d" ;
-        odPdoK(tablica[i], rozmiary[i]);
-        f_wyj << selection(tablica[i], rozmiary[i]) << endl;
-        cout << "e"<< endl;
+        int n = rozmiary[i];
+        int tab[n];
+
+        for(int j=0; j<5; j++)
+        {
+            odPdoK(tab, n);
+            f_wyj << wskaz_funkcji[j](tab, n) << '\t';
+            cout << "a"<<flush ;
+        }
+        cout << endl;
+        f_wyj << endl;
     }
     cout << "1" << endl;
     f_wyj << endl;
     
     for(int i=0; i<5; i++)
     {
-        odKdoP(tablica[i], rozmiary[i]);
-        f_wyj << bubble(tablica[i], rozmiary[i]) << '\t';
-        cout << "a" ;
-        odKdoP(tablica[i], rozmiary[i]);
-        f_wyj << index(tablica[i], rozmiary[i]) << '\t';
-        cout << "b" ;
-        odKdoP(tablica[i], rozmiary[i]);
-        f_wyj << insert(tablica[i], rozmiary[i]) << '\t';
-        cout << "c" ;
-        odKdoP(tablica[i], rozmiary[i]);
-        f_wyj << alg_sort(tablica[i], rozmiary[i]) << '\t';
-        cout << "d" ;
-        odKdoP(tablica[i], rozmiary[i]);
-        f_wyj << selection(tablica[i], rozmiary[i]) << endl;
-        cout << "e" << endl ;
+        int n = rozmiary[i];
+        int tab[n];
+
+        for(int j=0; j<5; j++)
+        {
+            odKdoP(tab, n);
+            f_wyj << wskaz_funkcji[j](tab, n) << '\t';
+            cout << "a"<<flush ;
+        }
+        cout << endl;
+        f_wyj << endl;
     }
     cout << "2" << endl;
     f_wyj << endl;
 
     for(int i=0; i<5; i++)
     {
-        losowo(tablica[i], rozmiary[i]);
-        f_wyj << bubble(tablica[i], rozmiary[i]) << '\t';
-        cout << "a" ;
-        losowo(tablica[i], rozmiary[i]);
-        f_wyj << index(tablica[i], rozmiary[i]) << '\t';
-        cout << "b" ;
-        losowo(tablica[i], rozmiary[i]);
-        f_wyj << insert(tablica[i], rozmiary[i]) << '\t';
-        cout << "c" ;
-        losowo(tablica[i], rozmiary[i]);
-        f_wyj << alg_sort(tablica[i], rozmiary[i]) << '\t';
-        cout << "d" ;
-        losowo(tablica[i], rozmiary[i]);
-        f_wyj << selection(tablica[i], rozmiary[i]) << endl;
-        cout << "e" << endl;
+        int n = rozmiary[i];
+        int tab[n];
+
+        for(int j=0; j<5; j++)
+        {
+            losowo(tab, n);
+            f_wyj << wskaz_funkcji[j](tab, n) << '\t';
+            cout << "a"<<flush ;
+        }
+        cout << endl;
+        f_wyj << endl;
     }
     cout << "3" ;
     cout << "KONIEC" ;
 
+    getchar();
+    getchar();
     return 0;
 }
