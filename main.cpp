@@ -21,8 +21,8 @@ float selection(int tab[], int n)
         swap(tab[min_idx], tab[i]);  
     }  
     auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(stop - start); 
-    return duration.count()/100000.0;
+    auto duration = duration_cast<nanoseconds>(stop - start).count();
+    return duration * 1.0 / nano::den;
 }  
 
 float alg_sort(int tab[], int n)
@@ -30,8 +30,8 @@ float alg_sort(int tab[], int n)
     auto start = high_resolution_clock::now(); 
     sort(tab, tab+n);
     auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(stop - start); 
-    return duration.count()/100000.0;
+    auto duration = duration_cast<nanoseconds>(stop - start).count();
+    return duration * 1.0 / nano::den;
 }
 
 float index(int tab[], int n)
@@ -45,27 +45,27 @@ float index(int tab[], int n)
     for(int i=0; i<x; i++)
         if(B[i] != 0)
             for(int j=0; j<B[i]; j++)
-                break;
+                continue;
 
     auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(stop - start); 
-    return duration.count()/100000.0;
+    auto duration = duration_cast<nanoseconds>(stop - start).count();
+    return duration * 1.0 / nano::den;
 }
 
 float bubble(int tab[], int n)
 {
     auto start = high_resolution_clock::now(); 
-    for(int i=0; i<n; i++)
+    for(int i=0; i<n-1; i++)
     {
-        for(int j=i+1; j<n; j++)
+        for(int j=0; j<n-i-1; j++)
         {
             if(tab[i] > tab[j])
                 swap(tab[i], tab[j]);
         }
     }
     auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(stop - start); 
-    return duration.count()/100000.0;
+    auto duration = duration_cast<nanoseconds>(stop - start).count();
+    return duration * 1.0 / nano::den;
 }
 
 float insert(int tab[], int n)
@@ -75,7 +75,7 @@ float insert(int tab[], int n)
     {
         int elem = tab[i];
         int k = i-1;
-        while(tab[k] > elem)
+        while(tab[k] > elem && k>0)
         {
             tab[k+1] = tab[k];
             k--;
@@ -83,8 +83,8 @@ float insert(int tab[], int n)
         tab[k+1] = elem;
     }
     auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(stop - start); 
-    return duration.count()/100000.0;
+    auto duration = duration_cast<nanoseconds>(stop - start).count();
+    return duration * 1.0 / nano::den;
 }
 
 void odPdoK(int tab[], int n)
